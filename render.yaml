@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: deepfake-detection-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: standard
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DEBUG
+        value: "false"
+      - key: CLASSIFICATION_THRESHOLD
+        value: "0.50"
+      - key: MAX_IMAGE_SIZE_MB
+        value: "15"
+      - key: MAX_VIDEO_SIZE_MB
+        value: "100"
+      - key: MAX_VIDEO_DURATION_SECONDS
+        value: "120"
+      - key: DEFAULT_SAMPLE_FRAMES
+        value: "20"
